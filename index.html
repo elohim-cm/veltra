@@ -1,1 +1,963 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veltra — Lancement Imminent | Carnet de Santé Numérique du Cameroun</title>
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bleu: {
+                            etat: '#0B1E36',
+                            hover: '#142C4C',
+                            surface: '#0F2744',
+                            light: '#1E3A5F'
+                        },
+                        or: {
+                            souverain: '#C5A059',
+                            light: '#E5C789',
+                            dark: '#9A7736',
+                            glow: '#DFB86C'
+                        },
+                        vert: {
+                            conforme: '#047857',
+                            bg: '#ECFDF5',
+                            accent: '#10B981'
+                        },
+                        rouge: {
+                            alerte: '#B91C1C',
+                            bg: '#FEF2F2'
+                        },
+                        slate: {
+                            bg: '#F8FAFC',
+                            text: '#1E293B',
+                            muted: '#64748B',
+                            border: '#CBD5E1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Public Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    boxShadow: {
+                        'sovereign': '0 20px 40px -15px rgba(11, 30, 54, 0.15), 0 0 20px 0 rgba(197, 160, 89, 0.1)',
+                        'card-vip': '0 25px 50px -12px rgba(11, 30, 54, 0.25), 0 0 30px rgba(197, 160, 89, 0.25)',
+                        'glow-or': '0 0 25px rgba(197, 160, 89, 0.4)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+            font-family: 'Public Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #C5A059 0%, #E5C789 50%, #9A7736 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-badge-border {
+            border: 1px solid rgba(197, 160, 89, 0.4);
+        }
+
+        .pulse-gold {
+            animation: pulse-gold-anim 2.5s infinite;
+        }
+
+        @keyframes pulse-gold-anim {
+            0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.6); }
+            70% { box-shadow: 0 0 0 14px rgba(197, 160, 89, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+        }
+
+        .cm-flag-stripe {
+            height: 4px;
+            background: linear-gradient(to right, #007A5E 33.33%, #CE1126 33.33%, #CE1126 66.66%, #FCD116 66.66%);
+        }
+
+        /* VIP Card Holographic Effect */
+        .vip-card-holo {
+            background: linear-gradient(135deg, #0B1E36 0%, #0F2744 50%, #1E3A5F 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .vip-card-holo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(197, 160, 89, 0.08) 45%,
+                rgba(229, 199, 137, 0.25) 50%,
+                rgba(197, 160, 89, 0.08) 55%,
+                transparent 100%
+            );
+            transform: rotate(30deg);
+            animation: holo-shine 6s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes holo-shine {
+            0% { transform: translateY(-100%) rotate(30deg); }
+            100% { transform: translateY(100%) rotate(30deg); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C5A059;
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-text bg-slate-bg min-h-screen flex flex-col justify-between">
+
+    <!-- TOP OFFICIAL ALERT BANNER -->
+    <div class="bg-bleu-etat text-white text-xs py-2.5 px-4 border-b border-or-souverain/30 sticky top-0 z-50 backdrop-blur-md bg-bleu-etat/95">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center w-2.5 h-2.5 rounded-full bg-or-souverain animate-ping"></span>
+                <span class="font-extrabold tracking-wider uppercase text-[11px] text-or-light">LANCEMENT IMMINENT</span>
+                <span class="text-slate-400 hidden sm:inline">•</span>
+                <span class="text-slate-200 text-[11px] font-medium">Ouverture officielle du registre national numérique de santé dans quelques jours</span>
+            </div>
+            <div class="flex items-center gap-4 font-mono text-[11px] text-slate-300">
+                <span class="flex items-center gap-1.5 text-or-light"><i class="fa-solid fa-shield-halved text-or-souverain"></i> Norme Souveraine AES-256</span>
+                <span class="hidden md:inline text-slate-500">|</span>
+                <span class="hidden md:inline text-vert-accent"><i class="fa-solid fa-server"></i> Serveurs MINSANTÉ Cameroun</span>
+            </div>
+        </div>
+    </div>
+    <div class="cm-flag-stripe"></div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="bg-white border-b border-slate-border/80 shadow-sm relative z-40">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="relative w-12 h-12 bg-bleu-etat rounded-xl flex items-center justify-center p-2 shadow-md border border-or-souverain/40 group-hover:border-or-souverain transition-all duration-300">
+                    <!-- Vector SVG Emblem -->
+                    <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 20 L42 80 L52 80 L32 20 Z" fill="#ffffff" opacity="0.95"/>
+                        <path d="M85 20 C70 45 60 65 48 80 L38 80 C52 60 65 40 75 20 Z" fill="#C5A059"/>
+                        <circle cx="50" cy="30" r="7.5" fill="#ffffff"/>
+                        <path d="M78 30 H88 M83 25 V35" stroke="#10B981" stroke-width="4.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl font-black tracking-tight text-bleu-etat">Veltra</span>
+                        <span class="bg-or-souverain/15 text-or-dark font-mono text-[10px] font-extrabold px-2 py-0.5 rounded-md border border-or-souverain/30 uppercase tracking-widest">TEASER</span>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-muted tracking-wider uppercase">Votre parcours santé, en un seul lieu</p>
+                </div>
+            </a>
+
+            <!-- Right Status Badge & VIP Fast-Track -->
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2 bg-slate-bg px-3.5 py-1.5 rounded-lg border border-slate-border text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-vert-conforme animate-pulse"></span>
+                    <span class="text-slate-muted">Statut :</span>
+                    <span class="text-bleu-etat font-bold">Pré-production finale</span>
+                </div>
+                <a href="#inscription" class="inline-flex items-center gap-2 bg-bleu-etat hover:bg-bleu-hover text-white text-xs font-bold px-4 py-2.5 rounded-xl border border-or-souverain shadow-sm transition-all duration-200">
+                    <i class="fa-solid fa-id-card text-or-souverain"></i>
+                    <span>Obtenir ma Carte VIP</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="teaser-content">
+        <!-- HERO SECTION -->
+        <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 overflow-hidden bg-gradient-to-b from-white via-slate-bg to-slate-100 border-b border-slate-border/80">
+            <!-- Background Watermark / Sovereign Texture -->
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f012_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f012_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none"></div>
+            <div class="absolute top-10 right-10 w-96 h-96 bg-or-souverain/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 left-10 w-96 h-96 bg-bleu-etat/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Copy & Countdown -->
+                    <div class="lg:col-span-7 space-y-8">
+                        
+                        <!-- High Impact Teaser Badge -->
+                        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white gold-badge-border shadow-sm pulse-gold">
+                            <span class="w-2.5 h-2.5 rounded-full bg-or-souverain animate-ping"></span>
+                            <span class="text-xs font-black tracking-wider text-bleu-etat uppercase">DÉPLOIEMENT NATIONAL EN COURS</span>
+                            <span class="text-slate-300">|</span>
+                            <span class="text-xs font-mono font-bold text-or-dark">CAMEROUN • 2026</span>
+                        </div>
+
+                        <!-- Main Headline -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-bleu-etat tracking-tight leading-[1.15]">
+                            Le Carnet de Santé Numérique du Cameroun <span class="gold-gradient-text block mt-1">arrive dans quelques jours.</span>
+                        </h1>
+
+                        <!-- Subtitle -->
+                        <p class="text-base sm:text-lg text-slate-muted font-normal leading-relaxed max-w-2xl">
+                            Un unique dossier médical inaltérable, sécurisé et souverain pour chaque citoyen. Centralisation du parcours de soins, traçabilité vaccinale intégrale, Identifiant Unique Patient (<span class="font-mono font-bold text-bleu-etat">IUP</span>) et déverrouillage sécurisé inter-hôpitaux.
+                        </p>
+
+                        <!-- DYNAMIC COUNTDOWN CONTAINER -->
+                        <div class="bg-bleu-etat text-white p-6 sm:p-7 rounded-2xl shadow-sovereign border border-or-souverain/50 relative overflow-hidden">
+                            <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-or-souverain/10 rounded-full blur-xl pointer-events-none"></div>
+                            
+                            <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-5">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-hourglass-half text-or-souverain text-sm animate-spin" style="animation-duration: 8s;"></i>
+                                    <span class="text-xs font-extrabold uppercase tracking-widest text-or-light">Compte à Rebours Avant Ouverture Officielle</span>
+                                </div>
+                                <span class="text-[10px] font-mono font-bold text-vert-accent bg-vert-conforme/30 border border-vert-conforme/40 px-2.5 py-0.5 rounded">J-5 DE DÉPLOIEMENT</span>
+                            </div>
+
+                            <!-- Countdown Digits Grid -->
+                            <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+                                <div class="bg-bleu-surface p-3 sm:p-4 rounded-xl border border-white/10 shadow-inner">
+                                    <div id="cdDays" class="text-3xl sm:text-4xl font-black font-mono text-white">05</div>
+                                    <div class="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider mt-1">Jours</div>
+                                </div>
+                                <div class="bg-bleu-surface p-3 sm:p-4 rounded-xl border border-white/10 shadow-inner">
+                                    <div id="cdHours" class="text-3xl sm:text-4xl font-black font-mono text-or-light">18</div>
+                                    <div class="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider mt-1">Heures</div>
+                                </div>
+                                <div class="bg-bleu-surface p-3 sm:p-4 rounded-xl border border-white/10 shadow-inner">
+                                    <div id="cdMinutes" class="text-3xl sm:text-4xl font-black font-mono text-white">42</div>
+                                    <div class="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider mt-1">Minutes</div>
+                                </div>
+                                <div class="bg-bleu-surface p-3 sm:p-4 rounded-xl border border-white/10 shadow-inner">
+                                    <div id="cdSeconds" class="text-3xl sm:text-4xl font-black font-mono text-or-souverain">19</div>
+                                    <div class="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider mt-1">Secondes</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 flex flex-wrap items-center justify-between text-xs text-slate-300 border-t border-white/10 pt-3 gap-2">
+                                <span class="flex items-center gap-1.5 text-slate-300">
+                                    <i class="fa-solid fa-circle-check text-vert-accent"></i>
+                                    237+ Hôpitaux connectés aux hubs régionaux
+                                </span>
+                                <span class="text-or-light font-mono font-bold text-[11px]">Ordre Prioritaire Actif</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Priority VIP Registration Form -->
+                    <div class="lg:col-span-5" id="inscription">
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl border-2 border-or-souverain/40 shadow-sovereign relative">
+                            <!-- Floating Badge Header -->
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+                                <div>
+                                    <span class="inline-block bg-or-souverain/15 text-or-dark font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-md border border-or-souverain/30 mb-1">
+                                        ACCÈS ANTICIPÉ EXCLUSIF
+                                    </span>
+                                    <h3 class="text-xl font-extrabold text-bleu-etat">Réservation VIP & Notifier</h3>
+                                </div>
+                                <div class="w-10 h-10 rounded-xl bg-bleu-etat text-or-souverain flex items-center justify-center text-lg shadow">
+                                    <i class="fa-solid fa-crown"></i>
+                                </div>
+                            </div>
+
+                            <!-- VIP Registration Form -->
+                            <form id="vipForm" onsubmit="generateVipCard(event)" class="space-y-4">
+                                <div>
+                                    <label for="vipFullName" class="block text-xs font-bold text-bleu-etat mb-1.5">
+                                        Nom & Prénom Complêts *
+                                    </label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                                        <input type="text" id="vipFullName" required placeholder="ex: Samuel ETO'O Fils" 
+                                               class="w-full text-sm pl-10 pr-3 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-or-souverain focus:border-or-souverain outline-none transition-all">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="vipEmail" class="block text-xs font-bold text-bleu-etat mb-1.5">
+                                        Adresse Email *
+                                    </label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-envelope absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                                        <input type="email" id="vipEmail" required placeholder="votre.email@domaine.cm" 
+                                               class="w-full text-sm pl-10 pr-3 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-or-souverain focus:border-or-souverain outline-none transition-all">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="vipPhone" class="block text-xs font-bold text-bleu-etat mb-1.5">
+                                            Téléphone (+237) *
+                                        </label>
+                                        <div class="relative">
+                                            <i class="fa-solid fa-phone absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                                            <input type="tel" id="vipPhone" required placeholder="690 00 00 00" 
+                                                   class="w-full text-sm pl-10 pr-3 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-or-souverain focus:border-or-souverain outline-none transition-all">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="vipRole" class="block text-xs font-bold text-bleu-etat mb-1.5">
+                                            Votre Profil *
+                                        </label>
+                                        <select id="vipRole" required class="w-full text-sm p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-or-souverain focus:border-or-souverain outline-none transition-all bg-white font-medium">
+                                            <option value="Citoyen / Patient">Citoyen / Patient</option>
+                                            <option value="Médecin / Soignant">Médecin / Soignant</option>
+                                            <option value="Établissement de Santé">Hôpital / Clinique</option>
+                                            <option value="Pharmacien">Pharmacie / Dépôt</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2">
+                                    <button type="submit" class="w-full bg-bleu-etat hover:bg-bleu-hover text-white font-extrabold py-4 px-6 rounded-xl border border-or-souverain shadow-md transition-all duration-200 flex items-center justify-center gap-3 transform hover:-translate-y-0.5">
+                                        <i class="fa-solid fa-id-card-clip text-or-souverain text-lg"></i>
+                                        <span>Générer Ma Carte VIP & Réserver</span>
+                                    </button>
+                                </div>
+
+                                <p class="text-[11px] text-slate-muted text-center pt-1 leading-snug">
+                                    <i class="fa-solid fa-lock text-vert-conforme mr-1"></i>
+                                    Inscriptions sécurisées selon la loi de protection des données du Cameroun. Génération instantanée de votre pass prioritaire.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INTERACTIVE ROLE PREVIEW "CE QUI VOUS ATTEND" -->
+        <section id="apercu-interactif" class="py-20 bg-white border-b border-slate-border/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-md bg-bleu-etat/5 text-bleu-etat text-xs font-extrabold tracking-wider uppercase mb-3 border border-bleu-etat/10">
+                        <i class="fa-solid fa-eye text-or-souverain"></i> Immersion Produits & Rôles
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-black text-bleu-etat tracking-tight">
+                        Ce qui vous attend dès le jour J du lancement
+                    </h2>
+                    <p class="mt-3 text-slate-muted text-base">
+                        Découvrez comment Veltra simplifie et sécurise l'expérience pour chaque acteur de l'écosystème médical national.
+                    </p>
+
+                    <!-- TAB SELECTORS -->
+                    <div class="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 p-1.5 bg-slate-100 rounded-2xl border border-slate-200 max-w-2xl mx-auto">
+                        <button onclick="switchRoleTab('patient')" id="tabBtn-patient" class="role-tab-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 flex items-center gap-2.5 bg-bleu-etat text-white shadow-sm">
+                            <i class="fa-solid fa-mobile-screen-button text-or-souverain"></i>
+                            <span>Citoyen / Patient</span>
+                        </button>
+                        <button onclick="switchRoleTab('medecin')" id="tabBtn-medecin" class="role-tab-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 flex items-center gap-2.5 text-slate-600 hover:text-bleu-etat">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <span>Médecin / Soignant</span>
+                        </button>
+                        <button onclick="switchRoleTab('gerant')" id="tabBtn-gerant" class="role-tab-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 flex items-center gap-2.5 text-slate-600 hover:text-bleu-etat">
+                            <i class="fa-solid fa-hospital-user"></i>
+                            <span>Gérant d'Hôpital</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PREVIEW DISPLAY CANVAS / MOCKUPS -->
+                <div class="bg-slate-50 rounded-3xl border border-slate-200 p-4 sm:p-8 shadow-sovereign relative min-h-[520px] flex items-center justify-center">
+                    
+                    <!-- TAB 1: PATIENT PREVIEW (MOBILE CARD) -->
+                    <div id="roleContent-patient" class="role-content w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-5 flex justify-center">
+                            <!-- Mobile Phone UI Mockup -->
+                            <div class="w-72 bg-bleu-etat p-3.5 rounded-[40px] border-4 border-slate-700 shadow-2xl text-white">
+                                <div class="w-28 h-4 bg-slate-800 rounded-b-xl mx-auto mb-3"></div>
+                                <div class="bg-white text-slate-text rounded-[28px] p-4 space-y-3 font-sans">
+                                    <div class="flex items-center justify-between border-b pb-2">
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase">Application Citoyen</span>
+                                        <span class="text-[10px] font-mono font-bold bg-vert-bg text-vert-conforme px-2 py-0.5 rounded">CONNECTÉ</span>
+                                    </div>
+                                    <div class="text-center py-1">
+                                        <div class="w-14 h-14 rounded-full bg-slate-100 border-2 border-or-souverain mx-auto mb-1 flex items-center justify-center text-bleu-etat font-extrabold text-xl">
+                                            SE
+                                        </div>
+                                        <h4 class="font-extrabold text-xs text-bleu-etat">ETO'O Samuel</h4>
+                                        <p class="font-mono text-[10px] text-slate-500">IUP : <span class="font-bold text-bleu-etat">VLT-2026-CM99</span></p>
+                                    </div>
+                                    <div class="bg-slate-bg p-2.5 rounded-xl border border-or-souverain/30 text-center">
+                                        <p class="text-[9px] font-bold text-or-dark uppercase mb-1"><i class="fa-solid fa-qrcode mr-1"></i> Pass QR Consultation</p>
+                                        <div class="w-24 h-24 mx-auto bg-white p-1.5 rounded-lg border border-slate-200 flex items-center justify-center">
+                                            <i class="fa-solid fa-qrcode text-5xl text-bleu-etat"></i>
+                                        </div>
+                                        <span class="text-[8px] text-slate-400 block mt-1 font-mono">Valide 5 mn • Session Éphémère</span>
+                                    </div>
+                                    <div class="space-y-1 text-[11px]">
+                                        <div class="p-2 bg-vert-bg text-vert-conforme rounded-lg flex justify-between font-bold">
+                                            <span>Vaccin Fièvre Jaune</span>
+                                            <span>À JOUR</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-7 space-y-4">
+                            <span class="inline-block bg-or-souverain/15 text-or-dark font-mono text-xs font-extrabold px-3 py-1 rounded-md border border-or-souverain/30">
+                                EXPÉRIENCE PATIENT
+                            </span>
+                            <h3 class="text-2xl font-black text-bleu-etat">Mon Carnet de Santé toujours dans ma poche</h3>
+                            <ul class="space-y-3 text-sm text-slate-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Identifiant IUP Permanent :</strong> Relié à vos actes de soin de la naissance à l'âge adulte, dans n'importe quel hôpital public ou privé.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Pass QR Dynamique :</strong> Donnez accès temporaire à votre médecin d'un simple scan au début de la consultation.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Gestion Filiation (21 Ans) :</strong> Vos enfants sont reliés à votre profil et se détachent en autonomie à leur majorité.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: MEDECIN PREVIEW -->
+                    <div id="roleContent-medecin" class="role-content hidden w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-5 flex justify-center">
+                            <!-- Tablet UI Mockup -->
+                            <div class="w-full bg-slate-800 p-3 rounded-2xl shadow-2xl border-2 border-slate-600 text-slate-text">
+                                <div class="bg-white rounded-xl p-3 space-y-3 font-sans text-xs">
+                                    <div class="bg-bleu-etat text-white p-2.5 rounded-lg flex justify-between items-center text-[10px]">
+                                        <span class="font-bold"><i class="fa-solid fa-user-doctor text-or-souverain mr-1"></i> Dr. NKOUE Paul</span>
+                                        <span class="bg-vert-conforme px-1.5 py-0.5 rounded font-mono">Hôpital Central Yaoundé</span>
+                                    </div>
+                                    <div class="p-2.5 bg-rouge-bg border border-rouge-alerte/30 rounded-lg text-rouge-alerte font-bold text-[11px] flex justify-between items-center">
+                                        <span><i class="fa-solid fa-triangle-exclamation mr-1"></i> ALLERGIE SÉVÈRE : PÉNISILLINE</span>
+                                        <span class="bg-white px-1.5 py-0.5 rounded font-mono text-[10px]">O+</span>
+                                    </div>
+                                    <div class="bg-slate-50 p-2 rounded-lg border space-y-1">
+                                        <div class="font-bold text-bleu-etat">Acte Médical : Dose Vaccinale</div>
+                                        <div class="text-[10px] text-slate-500">Lot #VAC-2026-BCG-042 • Traçabilité MINSANTÉ</div>
+                                        <button class="w-full bg-bleu-etat text-white py-1.5 rounded font-bold text-[10px] mt-1">Enregistrer la Consultation en 1-Clic</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-7 space-y-4">
+                            <span class="inline-block bg-bleu-etat/10 text-bleu-etat font-mono text-xs font-extrabold px-3 py-1 rounded-md border border-bleu-etat/20">
+                                INTERFACE PRATICIEN & SOIGNANT
+                            </span>
+                            <h3 class="text-2xl font-black text-bleu-etat">Gagnez du temps et sauvez des lives aux urgences</h3>
+                            <ul class="space-y-3 text-sm text-slate-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Scanner Quick-Scan :</strong> Déverrouillez le dossier du patient instantanément avec l'appareil photo de votre tablette.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Procédure Break-Glass Urgence :</strong> En cas d'inconscience, débloquez les données vitales (Allergies, Groupe Sanguin) avec traçabilité administrative d'urgence.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Catalogue Médicamenteux Intégré :</strong> Sélection rapide des lots de vaccins et prescriptions certifiées par le ministère.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: GERANT PREVIEW -->
+                    <div id="roleContent-gerant" class="role-content hidden w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-5 flex justify-center">
+                            <!-- Desktop Dashboard UI Mockup -->
+                            <div class="w-full bg-white p-3.5 rounded-2xl shadow-2xl border border-slate-300 font-sans text-xs space-y-3">
+                                <div class="flex items-center justify-between border-b pb-2">
+                                    <div class="font-bold text-bleu-etat text-[11px]"><i class="fa-solid fa-chart-line text-or-souverain mr-1"></i> Dashboard Hospitalier</div>
+                                    <span class="text-[9px] font-mono bg-or-souverain/20 text-or-dark font-bold px-1.5 py-0.5 rounded">Hôpital Laquintinie</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="p-2 bg-slate-50 rounded border">
+                                        <div class="text-[9px] text-slate-400 uppercase font-bold">Inscriptions IUP</div>
+                                        <div class="font-mono font-bold text-lg text-bleu-etat">1,420</div>
+                                    </div>
+                                    <div class="p-2 bg-slate-50 rounded border">
+                                        <div class="text-[9px] text-slate-400 uppercase font-bold">Stock Vaccins</div>
+                                        <div class="font-mono font-bold text-lg text-vert-conforme">98.4%</div>
+                                    </div>
+                                </div>
+                                <div class="p-2 bg-bleu-etat text-white rounded text-[10px] space-y-1">
+                                    <div class="flex justify-between"><span>Audit Log Break-Glass:</span> <span class="text-or-light font-bold">0 Alerte active</span></div>
+                                    <div class="flex justify-between"><span>Lots Traçables:</span> <span class="text-vert-accent font-bold">Conformes</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-7 space-y-4">
+                            <span class="inline-block bg-vert-bg text-vert-conforme font-mono text-xs font-extrabold px-3 py-1 rounded-md border border-vert-conforme/30">
+                                RÔLE ADMINISTRATION & PHARMACIE
+                            </span>
+                            <h3 class="text-2xl font-black text-bleu-etat">Maîtrise totale des flux et stocks sanitaires</h3>
+                            <ul class="space-y-3 text-sm text-slate-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Traçabilité des Lots de Vaccins :</strong> Enregistrement rigoureux de l'entrée en stock jusqu'à l'injection finale au patient.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Gestion des Rôles & Habilitations :</strong> Attribution stricte des droits d'accès selon les accréditations du personnel soignant.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-vert-conforme text-lg mt-0.5"></i>
+                                    <span><strong>Statistiques Régionales en Temps Réel :</strong> Vision globale des taux de couverture vaccinale et des admissions par pôle.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: LES 4 PILIERS DE VELTRA -->
+        <section class="py-20 bg-slate-bg border-b border-slate-border/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-md bg-or-souverain/15 text-or-dark text-xs font-extrabold tracking-wider uppercase mb-3 border border-or-souverain/30">
+                        <i class="fa-solid fa-cubes"></i> Architecture du Système
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-black text-bleu-etat tracking-tight">
+                        Les 4 Piliers Inviolables à la Clé du Lancement
+                    </h2>
+                    <p class="mt-3 text-slate-muted text-base">
+                        Une rupture technologique majeure pensée pour éliminer la perte d'historique médical au Cameroun.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Pillar 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-or-souverain/60 transition-all duration-300 hover:shadow-card-vip group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-bleu-etat text-or-souverain flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform shadow">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+                            <span class="font-mono text-[11px] font-bold text-or-dark uppercase tracking-widest block mb-1">Pilier 01</span>
+                            <h3 class="text-lg font-extrabold text-bleu-etat mb-2">Identifiant Unique (IUP)</h3>
+                            <p class="text-xs text-slate-muted leading-relaxed mb-4">
+                                Un code national unique attribué dès la naissance ou lors du KYC pour lier l'ensemble des dossiers médicaux sans doublons.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-bleu-etat">
+                            <span>Inaltérable & Unique</span>
+                            <i class="fa-solid fa-arrow-right text-or-souverain"></i>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-or-souverain/60 transition-all duration-300 hover:shadow-card-vip group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-bleu-etat text-or-souverain flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform shadow">
+                                <i class="fa-solid fa-timeline"></i>
+                            </div>
+                            <span class="font-mono text-[11px] font-bold text-or-dark uppercase tracking-widest block mb-1">Pilier 02</span>
+                            <h3 class="text-lg font-extrabold text-bleu-etat mb-2">Carnet Sanitaire Linéaire</h3>
+                            <p class="text-xs text-slate-muted leading-relaxed mb-4">
+                                Historique vaccinal continu, consultations, traitements chroniques et allergies répertoriés au même endroit toute la vie.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-bleu-etat">
+                            <span>Continuité à Vie</span>
+                            <i class="fa-solid fa-arrow-right text-or-souverain"></i>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-or-souverain/60 transition-all duration-300 hover:shadow-card-vip group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-bleu-etat text-or-souverain flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform shadow">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                            <span class="font-mono text-[11px] font-bold text-or-dark uppercase tracking-widest block mb-1">Pilier 03</span>
+                            <h3 class="text-lg font-extrabold text-bleu-etat mb-2">QR Code Dynamique</h3>
+                            <p class="text-xs text-slate-muted leading-relaxed mb-4">
+                                Session de consultation à durée limitée. Le patient valide l'accès d'un scan et conserve le contrôle direct de sa vie privée.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-bleu-etat">
+                            <span>Souveraineté Citoyenne</span>
+                            <i class="fa-solid fa-arrow-right text-or-souverain"></i>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-or-souverain/60 transition-all duration-300 hover:shadow-card-vip group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-rouge-alerte text-white flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition-transform shadow">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <span class="font-mono text-[11px] font-bold text-rouge-alerte uppercase tracking-widest block mb-1">Pilier 04</span>
+                            <h3 class="text-lg font-extrabold text-bleu-etat mb-2">Break-Glass Urgence</h3>
+                            <p class="text-xs text-slate-muted leading-relaxed mb-4">
+                                Procédure de déblocage vitale aux urgences en cas d'inconscience du patient, avec traçabilité et logs d'audit ministériels.
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rouge-alerte">
+                            <span>Sécurité Vitale Auditée</span>
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: FAQ ACCORDION -->
+        <section class="py-20 bg-white border-b border-slate-border/80">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-md bg-bleu-etat/5 text-bleu-etat text-xs font-extrabold tracking-wider uppercase mb-3">
+                        <i class="fa-solid fa-circle-question text-or-souverain"></i> Foire Aux Questions Teaser
+                    </div>
+                    <h2 class="text-3xl font-black text-bleu-etat tracking-tight">Questions Fréquentes Avant Lancement</h2>
+                    <p class="text-slate-muted text-sm mt-2">Tout ce qu'il faut savoir sur l'arrivée imminente de la plateforme Veltra.</p>
+                </div>
+
+                <div class="space-y-4" id="faqContainer">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden transition-all duration-200 shadow-sm">
+                        <button onclick="toggleFaqTeaser(1)" class="w-full p-5 text-left font-extrabold text-bleu-etat flex items-center justify-between gap-4 focus:outline-none">
+                            <span class="text-base">Quand la plateforme sera-t-elle officiellement accessible ?</span>
+                            <i id="faqIconTeaser-1" class="fa-solid fa-chevron-down text-or-souverain transition-transform duration-300"></i>
+                        </button>
+                        <div id="faqContentTeaser-1" class="hidden px-5 pb-5 text-sm text-slate-muted leading-relaxed border-t border-slate-200/60 pt-3 bg-white">
+                            Le lancement officiel de Veltra est prévu dans quelques jours (voir le compte à rebours en haut de page). Les pré-inscrits VIP recevront une notification SMS et Email prioritaire dès l'ouverture des accès sur leur région.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden transition-all duration-200 shadow-sm">
+                        <button onclick="toggleFaqTeaser(2)" class="w-full p-5 text-left font-extrabold text-bleu-etat flex items-center justify-between gap-4 focus:outline-none">
+                            <span class="text-base">Comment créer son compte au lancement ?</span>
+                            <i id="faqIconTeaser-2" class="fa-solid fa-chevron-down text-or-souverain transition-transform duration-300"></i>
+                        </button>
+                        <div id="faqContentTeaser-2" class="hidden px-5 pb-5 text-sm text-slate-muted leading-relaxed border-t border-slate-200/60 pt-3 bg-white">
+                            Si vous vous êtes inscrit sur cette page Teaser, votre compte est déjà pré-réservé avec votre code VIP. Il vous suffira de valider votre numéro de téléphone via OTP lors du jour J pour activer votre Identifiant Unique Patient (IUP).
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden transition-all duration-200 shadow-sm">
+                        <button onclick="toggleFaqTeaser(3)" class="w-full p-5 text-left font-extrabold text-bleu-etat flex items-center justify-between gap-4 focus:outline-none">
+                            <span class="text-base">Mes données médicales sont-elles sécurisées ?</span>
+                            <i id="faqIconTeaser-3" class="fa-solid fa-chevron-down text-or-souverain transition-transform duration-300"></i>
+                        </button>
+                        <div id="faqContentTeaser-3" class="hidden px-5 pb-5 text-sm text-slate-muted leading-relaxed border-t border-slate-200/60 pt-3 bg-white">
+                            Absolument. Toutes les données sont chiffrées de bout en bout selon la norme AES-256 et hébergées exclusivement sur les serveurs souverains de la République du Cameroun. Aucun tiers non autorisé ne peut accéder à votre dossier.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden transition-all duration-200 shadow-sm">
+                        <button onclick="toggleFaqTeaser(4)" class="w-full p-5 text-left font-extrabold text-bleu-etat flex items-center justify-between gap-4 focus:outline-none">
+                            <span class="text-base">Les hôpitaux régionaux sont-ils déjà équipés ?</span>
+                            <i id="faqIconTeaser-4" class="fa-solid fa-chevron-down text-or-souverain transition-transform duration-300"></i>
+                        </button>
+                        <div id="faqContentTeaser-4" class="hidden px-5 pb-5 text-sm text-slate-muted leading-relaxed border-t border-slate-200/60 pt-3 bg-white">
+                            Oui, la phase de déploiement des terminaux de lecture QR et de formation du personnel médical touche à sa fin dans plus de 237 centres de santé et hôpitaux principaux (Yaoundé, Douala, Garoua, Bafoussam, Bamenda, Maroua, Kribi, etc.).
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-bleu-etat text-white border-t-4 border-or-souverain">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-white/10">
+                <div class="md:col-span-2 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-bleu-surface rounded-lg flex items-center justify-center p-1 border border-or-souverain/40">
+                            <svg viewBox="0 0 100 100" class="w-full h-full text-white" fill="none">
+                                <path d="M15 20 L42 80 L52 80 L32 20 Z" fill="#ffffff"/>
+                                <path d="M85 20 C70 45 60 65 48 80 L38 80 C52 60 65 40 75 20 Z" fill="#C5A059"/>
+                                <circle cx="50" cy="30" r="7.5" fill="#ffffff"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-black">Veltra</span>
+                    </div>
+                    <p class="text-xs text-slate-300 max-w-md leading-relaxed">
+                        Plateforme nationale souveraine d'enregistrement, d'identification et de suivi du parcours de soins de la République du Cameroun.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-or-light mb-3">Fonctionnalités</h4>
+                    <ul class="space-y-1.5 text-xs text-slate-300">
+                        <li>Identifiant Unique Patient (IUP)</li>
+                        <li>Carnet Vaccinal Linéaire</li>
+                        <li>Pass QR Dynamique</li>
+                        <li>Urgence Break-Glass</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-or-light mb-3">Conformité</h4>
+                    <ul class="space-y-1.5 text-xs text-slate-300">
+                        <li><i class="fa-solid fa-lock text-or-souverain mr-1"></i> AES-256 Encrypted</li>
+                        <li><i class="fa-solid fa-server text-or-souverain mr-1"></i> Hébergement Souverain</li>
+                        <li><i class="fa-solid fa-shield text-or-souverain mr-1"></i> Traçabilité Inaltérable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
+                <p>© 2026 Veltra Cameroun. Tous droits réservés.</p>
+                <p class="font-mono text-[11px] text-or-light">« Votre parcours santé, en un seul lieu »</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- VIP CARD MODAL OVERLAY -->
+    <div id="vipCardModal" class="fixed inset-0 z-50 bg-bleu-etat/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full border border-or-souverain shadow-card-vip overflow-hidden relative animate-in fade-in zoom-in duration-300">
+            
+            <!-- Modal Header -->
+            <div class="bg-bleu-etat text-white p-5 border-b border-or-souverain/30 flex justify-between items-center">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-crown text-or-souverain text-lg"></i>
+                    <div>
+                        <h3 class="font-extrabold text-base">Carte VIP d'Accès Anticipé</h3>
+                        <p class="text-[10px] font-mono text-or-light">RÉSERVATION CONFIRMÉE • VELTRA CAMEROUN</p>
+                    </div>
+                </div>
+                <button onclick="closeVipModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <!-- THE DIGITAL HOLOGRAPHIC VIP CARD -->
+                <div class="vip-card-holo rounded-2xl p-6 text-white border-2 border-or-souverain/60 shadow-xl relative space-y-5">
+                    <!-- Top Card Bar -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-bleu-etat/80 rounded-lg p-1 border border-or-souverain/50">
+                                <svg viewBox="0 0 100 100" class="w-full h-full text-white" fill="none">
+                                    <path d="M15 20 L42 80 L52 80 L32 20 Z" fill="#ffffff"/>
+                                    <path d="M85 20 C70 45 60 65 48 80 L38 80 C52 60 65 40 75 20 Z" fill="#C5A059"/>
+                                    <circle cx="50" cy="30" r="7.5" fill="#ffffff"/>
+                                </svg>
+                            </div>
+                            <span class="font-black text-lg tracking-tight">Veltra <span class="text-or-souverain text-xs font-mono">VIP PASS</span></span>
+                        </div>
+                        <span class="bg-or-souverain/20 text-or-light text-[10px] font-mono font-extrabold px-2.5 py-1 rounded-md border border-or-souverain/40 uppercase">
+                            PRIORITÉ #1
+                        </span>
+                    </div>
+
+                    <!-- User Card Info -->
+                    <div class="grid grid-cols-12 gap-4 items-center">
+                        <div class="col-span-8 space-y-1">
+                            <p class="text-[10px] uppercase font-mono text-slate-300">TITULAIRE DU PASS</p>
+                            <h4 id="cardName" class="font-black text-lg text-white truncate">SAMUEL ETO'O</h4>
+                            <p id="cardRole" class="text-xs text-or-light font-medium">Citoyen / Patient</p>
+                        </div>
+                        <div class="col-span-4 text-right">
+                            <div class="w-16 h-16 bg-white p-1 rounded-xl mx-auto shadow border border-or-souverain flex items-center justify-center">
+                                <i class="fa-solid fa-qrcode text-4xl text-bleu-etat"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer Codes -->
+                    <div class="pt-3 border-t border-white/15 flex items-center justify-between font-mono text-[11px]">
+                        <div>
+                            <span class="text-[9px] text-slate-300 block">NUMÉRO DE FILE</span>
+                            <span id="cardQueue" class="font-extrabold text-or-souverain">#VLT-VIP-0412</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[9px] text-slate-300 block">IUP PROVISOIRE</span>
+                            <span id="cardIup" class="font-extrabold text-white">VLT-2026-X892</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="space-y-2">
+                    <button onclick="copyVipPassCode()" class="w-full bg-bleu-etat hover:bg-bleu-hover text-white font-extrabold py-3 px-4 rounded-xl border border-or-souverain flex items-center justify-center gap-2 transition-colors">
+                        <i class="fa-regular fa-copy text-or-souverain"></i>
+                        <span id="copyBtnText">Copier mes Identifiants VIP</span>
+                    </button>
+                    <button onclick="closeVipModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl text-xs transition-colors">
+                        Fermer & Continuer l'exploration
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ----------------------------------------------------
+        // 1. DYNAMIC COUNTDOWN TIMER
+        // ----------------------------------------------------
+        function initTeaserCountdown() {
+            // Target set to 5 days, 18 hours, 42 minutes from current execution
+            const targetTime = new Date().getTime() + (5 * 24 * 60 * 60 * 1000) + (18 * 60 * 60 * 1000) + (42 * 60 * 1000);
+
+            function update() {
+                const now = new Date().getTime();
+                const diff = targetTime - now;
+
+                if (diff <= 0) return;
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cdDays').innerText = d < 10 ? '0' + d : d;
+                document.getElementById('cdHours').innerText = h < 10 ? '0' + h : h;
+                document.getElementById('cdMinutes').innerText = m < 10 ? '0' + m : m;
+                document.getElementById('cdSeconds').innerText = s < 10 ? '0' + s : s;
+            }
+
+            update();
+            setInterval(update, 1000);
+        }
+
+        // ----------------------------------------------------
+        // 2. ROLE SWITCHER INTERACTIVE PREVIEW
+        // ----------------------------------------------------
+        function switchRoleTab(role) {
+            // Hide all content blocks
+            document.querySelectorAll('.role-content').forEach(el => el.classList.add('hidden'));
+
+            // Deactivate all buttons
+            document.querySelectorAll('.role-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-bleu-etat', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+
+            // Activate chosen target
+            const contentTarget = document.getElementById(`roleContent-${role}`);
+            if (contentTarget) contentTarget.classList.remove('hidden');
+
+            const btnTarget = document.getElementById(`tabBtn-${role}`);
+            if (btnTarget) {
+                btnTarget.classList.add('bg-bleu-etat', 'text-white', 'shadow-sm');
+                btnTarget.classList.remove('text-slate-600');
+            }
+        }
+
+        // ----------------------------------------------------
+        // 3. GENERATE VIP CARD & MODAL
+        // ----------------------------------------------------
+        let vipQueueCounter = 412;
+
+        function generateVipCard(e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('vipFullName').value;
+            const role = document.getElementById('vipRole').value;
+
+            vipQueueCounter++;
+            const formattedQueue = '#VLT-VIP-' + (vipQueueCounter < 1000 ? ('0' + vipQueueCounter) : vipQueueCounter);
+            const randomIup = 'VLT-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('cardName').innerText = fullName.toUpperCase();
+            document.getElementById('cardRole').innerText = role;
+            document.getElementById('cardQueue').innerText = formattedQueue;
+            document.getElementById('cardIup').innerText = randomIup;
+
+            // Show modal
+            document.getElementById('vipCardModal').classList.remove('hidden');
+        }
+
+        function closeVipModal() {
+            document.getElementById('vipCardModal').classList.add('hidden');
+        }
+
+        function copyVipPassCode() {
+            const queue = document.getElementById('cardQueue').innerText;
+            const iup = document.getElementById('cardIup').innerText;
+            const textToCopy = `PASS VIP VELTRA CAMEROUN\nNuméro de File: ${queue}\nIUP Provisoire: ${iup}\nPlateforme Nationale de Santé.`;
+
+            // ExecCommand fall-back standard
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const btnText = document.getElementById('copyBtnText');
+            btnText.innerText = 'Copié dans le presse-papier !';
+            setTimeout(() => {
+                btnText.innerText = 'Copier mes Identifiants VIP';
+            }, 2500);
+        }
+
+        // ----------------------------------------------------
+        // 4. FAQ ACCORDION LOGIC
+        // ----------------------------------------------------
+        function toggleFaqTeaser(id) {
+            const content = document.getElementById(`faqContentTeaser-${id}`);
+            const icon = document.getElementById(`faqIconTeaser-${id}`);
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Initialize on window load
+        window.onload = function() {
+            initTeaserCountdown();
+        };
+    </script>
+</body>
+</html>
